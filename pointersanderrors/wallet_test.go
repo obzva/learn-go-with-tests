@@ -1,6 +1,9 @@
 package pointersanderrors
 
-import "testing"
+import (
+	"errors"
+	"testing"
+)
 
 func TestWallet(t *testing.T) {
 
@@ -51,7 +54,7 @@ func assertError(t testing.TB, got, want error) {
 		t.Fatal("didn't get an error but wanted one")
 	}
 
-	if got != want {
+	if !errors.Is(got, want) {
 		t.Errorf("got %q, want %q", got, want)
 	}
 }
